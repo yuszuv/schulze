@@ -2,6 +2,12 @@ require 'bundler/setup'
 
 require 'sinatra'
 
-get '/' do
-  'hello world!'
+module Schulze
+  class Application < Sinatra::Base
+    set :haml, format: :html5
+
+    get '/' do
+      'hello world!'
+    end
+  end
 end
