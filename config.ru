@@ -1,6 +1,5 @@
 $: << '.'
 
-require 'sinatra'
 require 'app'
 
-run Schulze::Application
+run Schulze

@@ -2,7 +2,7 @@
 %html{lang: 'de'}
   %head
     %meta{:charset => "utf-8"}
-    %title My App
+    %title Title
     :plain
       <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
       <!--[if lt IE 9]>
@@ -18,5 +18,8 @@
     .container
       .page-header
         = partial :header
-        %h1 Matze Schulze
-      = yield
+      .row
+        .span8.offset1
+          = yield
+        .span3
+          nav
