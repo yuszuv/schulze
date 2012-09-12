@@ -15,4 +15,8 @@
     %script{ :type => "text/javascript", :src =>"/js/bootstrap.min.js"}
 
   %body
-    = yield
+    .container
+      .page-header
+        = partial :header
+        %h1 Matze Schulze
+      = yield
