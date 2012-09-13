@@ -24,7 +24,8 @@ namespace :bootstrap do
 
   # desc 'Compile the assets. Requires lessc and uglifyjs'
   # To install: npm install -g less uglify-js
-  task :make => [:update_repo] do
+  #task :make => [:update_repo] do
+  task :make do
     `cd vendor/twitter-bootstrap; make`
   end
 
@@ -48,7 +49,7 @@ namespace :bootstrap do
   task :install => :find_or_create_zip do
     #`unzip -d public/ vendor/twitter-bootstrap/docs/assets/bootstrap.zip`
     `cp -r vendor/twitter-bootstrap/docs/assets/* public/`
-    `cd vendor/twitter-bootstrap; git co -- .`
+    #`cd vendor/twitter-bootstrap; git co -- .`
     #`cp vendor/twitter-bootstrap/docs/assets/js/jquery.js public/bootstrap/js/`
   end
 
