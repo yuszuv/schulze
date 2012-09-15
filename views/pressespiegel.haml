@@ -1,0 +1,6 @@
+%h2 Meine Artikel
+
+%table#articles.table
+  %tbody
+    - @articles.each do |article|
+      = partial :article, locals: { article: article }

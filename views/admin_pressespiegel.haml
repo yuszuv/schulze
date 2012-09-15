@@ -1,0 +1,39 @@
+%h2 Pressespiegel bearbeiten
+
+%form.form-horizontal{ method: "post", action: "/admin/pressespiegel" }
+  %input{ type: "hidden", name: "article[key]", value: @edit_article.key }
+  %legend Neuen Eintrag hinzufügen
+  .control-group
+    .controls
+      - %w{remove film music book pencil comment picture bookmark}.each do |name|
+        %label{ class: "radio inline" }
+          %input{ type: "radio", name: "article[icon]", value: name, id: name, checked: checked?(@edit_article.icon,name) }
+            = icon(name)
+  .control-group
+    %label.control-label{ for: "article[newspaper]" } Zeitung:
+    .controls
+      %input.span8{ type: "text", size: 50, name: "article[newspaper]", value: @edit_article.newspaper }
+  .control-group
+    %label.control-label{ for: "article[url]" } Link:
+    .controls
+      %input.span8{ type: "text", size: 50, name: "article[url]", value: @edit_article.url }
+  .control-group
+    %label.control-label{ for: "article[date]" } Datum:
+    .controls
+      %input.span4.datepicker{ type: "text", size: 50, name: "article[date]", value: @edit_article.date }
+      %span.help-inline Format: "tt.mm.jjjj"
+  .control-group
+    %label.control-label{ for: "article[description]" } Beschreibung:
+    .controls
+      %textarea.span8{ type: "textarea", rows: 3, size: 50, name: "article[description]" }= @edit_article.description
+  .control-group
+    .controls
+      %button.btn{ type: "submit" } Eintragen
+
+%h2 Bisheriger Pressespiegel
+
+%table.table#articles
+  %tbody
+    - @articles.each do |article|
+      = partial :article, locals: { article: article }
+

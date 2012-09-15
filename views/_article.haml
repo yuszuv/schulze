@@ -1,0 +1,18 @@
+%tr
+  %td= icon(article.icon)
+  %td
+    - if article.newspaper
+      %div
+        %span.link= link_to_article(article)
+        %span.small
+          %em= "(#{article.date})"
+    = article.description
+  -if request.path =~ /^\/admin/
+    %td
+      .btn= link_to "bearbeiten", "/admin/pressespiegel?key=#{article.key}"
+    %td
+      %form{ method: "post", action: "/admin/pressespiegel" }
+        %input{ type: "hidden", name: "key", value: article.key }
+        %input{ type: "hidden", name: "_method", value: "delete" }
+        %button.btn{ type: "submit" } löschen
+

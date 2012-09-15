@@ -11,16 +11,24 @@
 
     %link{ :href => "/css/bootstrap.css", :type => "text/css", :rel => "stylesheet" }
     %link{ :href => "/css/bootstrap-responsive.css", :type => "text/css", :rel => "stylesheet" }
+    %link{ :href => "/css/ui-lightness/jquery-ui-1.8.23.custom.css", :type => "text/css", :rel => "stylesheet" }
     %link{ :href => "/css/styles.css", :type => "text/css", :rel => "stylesheet" }
     %script{ :type => "text/javascript", :src =>"/js/jquery.js"}
+    %script{ :type => "text/javascript", :src =>"/js/jquery-ui-1.8.23.custom.min.js"}
+    %script{ :type => "text/javascript", :src =>"/js/jquery.ui.datepicker-de.js"}
     %script{ :type => "text/javascript", :src =>"/js/bootstrap.min.js"}
+    %script{ :type => "text/javascript", :src =>"/js/application.js"}
 
   %body
     .container
-      .page-header#header
-        = partial :header
       .row
-        .span8.offset1
-          = yield
-        .span3#navigation
+        .span18
+          .row
+            .span18
+              .page-header#header
+                = partial :header
+          .row
+            .span17.offset1
+              = yield
+        .span6#navigation
           = partial :navigation

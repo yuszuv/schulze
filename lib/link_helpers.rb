@@ -7,6 +7,15 @@ module Sinatra
       end
     end
 
+    def link_to_article(article)
+      if article.url.present?
+        article.url = "http://" + article.url unless article.url =~ /^\w+:\/\//
+        link_to article.newspaper, article.url
+      else
+        article.newspaper
+      end
+    end
+
     def link_to_unless_current(name,url,options={})
       if request.path == url
         name
