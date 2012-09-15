@@ -4,6 +4,8 @@
 #navigation img {
   margin: 2em; }
 
+#header a {
+  text-decoration: none; }
 #header span h1, #header span h2, #header span h3 {
   display: inline;
   font-family: Georgia, serif; }
@@ -22,6 +24,10 @@ a {
   -webkit-column-rule: 1px solid #cccccc;
   text-align: justify; }
 
+table#articles a {
+  color: #333333; }
+  table#articles a:hover {
+    text-decoration: none; }
 table#articles td:nth-child(2) {
   width: 100%; }
 table#articles form {

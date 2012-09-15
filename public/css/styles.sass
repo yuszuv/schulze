@@ -6,6 +6,8 @@
     margin: 2em
 
 #header
+  a
+    text-decoration: none
   span
     h1, h2, h3
       display: inline
@@ -26,7 +28,13 @@ a
   -webkit-column-rule: 1px solid #ccc
   text-align: justify
 
+
+
 table#articles 
+  a
+    color: #333
+    &:hover
+      text-decoration: none
   td:nth-child(2)
     width: 100%
   form
