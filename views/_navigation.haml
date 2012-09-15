@@ -1,5 +1,8 @@
 .tabs-right.tabbable
   %ul.nav.nav-tabs.nav-list
+    - if session[:logged_in] == "true"
+      = link_in_li "Logout", "/logout"
+
     %li.list-header
       %img.img-polaroid{ src: url("/img/photo.png"), width: "100" }
     = link_in_li "0", "/"
@@ -10,3 +13,4 @@
     = link_in_li "Partner", "/partner"
     = link_in_li "Kontakt", "/kontakt"
     = link_in_li "Impressum", "/impressum"
+

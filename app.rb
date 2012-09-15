@@ -14,8 +14,18 @@ class Schulze < Sinatra::Base
   set :haml, format: :html5, encoding: "ascii-8bit"
   set :method_override, true
 
+  enable :sessions
+
+  if development?
+    set session_secret: "supersecret"
+  end
+
   before do
     @title = "Mathias Schule — freier Journalist"
+  end
+
+  before '/admin/*' do
+    redirect to('/login') unless session[:logged_in] == "true"
   end
 
   def riak
@@ -90,5 +100,24 @@ class Schulze < Sinatra::Base
 
   get '/impressum' do
     haml :impressum
+  end
+
+  get '/login' do
+    redirect to('admin/pressespiegel') if session[:logged_in] == "true"
+    haml :login
+  end
+
+  post '/login' do
+    if params[:password] == "supersecretpassword"
+      session[:logged_in] = "true"
+      redirect to('/admin/pressespiegel')
+    else
+      redirect to('/login')
+    end
+  end
+
+  get '/logout' do
+    session[:logged_in] = nil
+    redirect to('/')
   end
 end
