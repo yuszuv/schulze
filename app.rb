@@ -59,6 +59,10 @@ class Schulze < Sinatra::Base
     haml :profil
   end
 
+  get '/admin' do
+    redirect to('/admin/pressespiegel')
+  end
+
   get '/admin/pressespiegel' do
     @articles = articles
     @edit_article = OpenStruct.new(riak.bucket('schulze').get(params[:key]).data.merge(key: params[:key]))
