@@ -49,8 +49,8 @@ class Schulze < Sinatra::Base
       item.modified = Time.parse(item.modified)
       item
     end.sort do |a,b| 
-      t1 = Time.parse(a.date).to_i rescue 0
-      t2 = Time.parse(b.date).to_i rescue 0
+      t1 = Time.parse(b.date).to_i rescue 0
+      t2 = Time.parse(a.date).to_i rescue 0
       t1 <=> t2
     end
   end
