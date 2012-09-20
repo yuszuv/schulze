@@ -48,7 +48,11 @@ class Schulze < Sinatra::Base
       item = OpenStruct.new(hash)
       item.modified = Time.parse(item.modified)
       item
-    end.sort{ |a,b| a.modified <=> b.modified }
+    end.sort do |a,b| 
+      t1 = Time.parse(a).to_i rescue 0
+      t2 = Time.parse(b).to_i rescue 0
+      t1 <=> t2
+    end
   end
 
   get '/' do
