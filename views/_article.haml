@@ -1,5 +1,5 @@
 %tr
-  %td= icon(article.icon)
+  %td= article.icon != "remove" ? icon(article.icon) : ""
   %td
     - if article.newspaper
       %div
