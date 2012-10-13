@@ -21,7 +21,7 @@ class Schulze < Sinatra::Base
   end
 
   before do
-    @title = "Mathias Schule — freier Journalist"
+    @title = "Mathias Schulze — freier Journalist"
   end
 
   before '/admin/*' do
