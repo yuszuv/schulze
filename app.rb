@@ -102,6 +102,14 @@ class Schulze < Sinatra::Base
     haml :partner
   end
 
+  get '/service' do
+    haml :service
+  end
+
+  get '/preise' do
+    haml :preise
+  end
+
   get '/kontakt' do
     haml :kontakt
   end
