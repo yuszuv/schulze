@@ -5,6 +5,7 @@ require 'haml'
 require 'sinatra/base'
 Dir.glob('lib/*').each { |file| require "#{file}" }
 require 'riak'
+require 'digest/sha1'
 
 class Schulze < Sinatra::Base
   include Sinatra::RenderPartial
@@ -124,7 +125,7 @@ class Schulze < Sinatra::Base
   end
 
   post '/login' do
-    if params[:password] == "supersecretpassword"
+    if Digest::SHA1.hexdigest(params[:password]) == "0bf56c85644de843404becc3f03b89ee63d29ef4"
       session[:logged_in] = "true"
       redirect to('/admin/pressespiegel')
     else
