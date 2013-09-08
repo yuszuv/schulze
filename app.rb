@@ -70,7 +70,7 @@ class Schulze < Sinatra::Base
 
   get '/admin/pressespiegel' do
     @articles = articles
-    @edit_article = OpenStruct.new(riak.bucket('schulze').get(params[:key]).data.merge(key: params[:key]))
+    @edit_article = OpenStruct.new(riak.bucket('schulze').get(params[:key]).data.merge(key: (params[:key].present? ? params[:key] : Time.now.to_i)))
     haml :admin_pressespiegel
   end
 
