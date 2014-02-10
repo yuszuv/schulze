@@ -24,6 +24,9 @@ a {
   -webkit-column-rule: 1px solid #cccccc;
   text-align: justify; }
 
+.index {
+  line-height: 2.5em; }
+
 table#articles a {
   color: #333333; }
   table#articles a:hover {
