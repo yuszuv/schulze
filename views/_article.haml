@@ -6,6 +6,10 @@
         %span.link= link_to_article(article)
         %span.small
           %em= "(#{article.date})"
+    - if article.filename.present?
+      = link_to "/uploads/#{article.filename}", class: "file" do
+        %i.icon-download
+        = article.filename
     = article.description
   -if request.path =~ /^\/admin/
     %td

@@ -1,6 +1,11 @@
 module Sinatra
   module LinkHelpers
-    def link_to(name,url,options={})
+    def link_to(name,url=nil,options={},&block)
+      if block_given?
+        options = url
+        url = name
+        name = capture_haml(&block)
+      end
       options.merge!(href: url)
       capture_haml do
         haml_tag :a, name, options

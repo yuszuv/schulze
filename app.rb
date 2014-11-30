@@ -6,6 +6,7 @@ require 'sinatra/base'
 Dir.glob('lib/*').each { |file| require "#{file}" }
 require 'riak'
 require 'digest/sha1'
+require 'fileutils'
 
 class Schulze < Sinatra::Base
   include Sinatra::RenderPartial
@@ -76,7 +77,16 @@ class Schulze < Sinatra::Base
 
   post '/admin/pressespiegel' do
     item = riak.bucket('schulze').get_or_new((params["article"] || {}).delete("key"))
-    item.data = params['article']
+    if params['article'].present?
+      if params['article']['file'].present?
+        file_params = params['article'].delete('file')
+        filename = file_params[:filename]
+        FileUtils.mkdir_p 'public/uploads'
+        FileUtils.cp file_params[:tempfile].path, File.join("public/uploads", filename)
+        params['article']['filename'] = file_params[:filename]
+      end
+      item.data = params['article']
+    end
     item.store
     redirect to('/admin/pressespiegel')
   end

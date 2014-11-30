@@ -31,6 +31,8 @@ table#articles a {
   color: #333333; }
   table#articles a:hover {
     text-decoration: none; }
+  table#articles a.file {
+    text-decoration: underline; }
 table#articles td:nth-child(2) {
   width: 100%; }
 table#articles form {

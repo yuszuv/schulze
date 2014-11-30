@@ -1,6 +1,6 @@
 %h2 Pressespiegel bearbeiten
 
-%form.form-horizontal{ method: "post", action: "/admin/pressespiegel" }
+%form.form-horizontal{ method: "post", action: "/admin/pressespiegel", enctype: "multipart/form-data" }
   %input{ type: "hidden", name: "article[key]", value: @edit_article.key }
   %legend Neuen Eintrag hinzufügen
   .control-group
@@ -17,6 +17,10 @@
     %label.control-label{ for: "article[url]" } Link:
     .controls
       %input.span8{ type: "text", size: 50, name: "article[url]", value: @edit_article.url }
+  .control-group
+    %label.control-label{ for: "article[file]" } Datei:
+    .controls
+      %input.span8{ type: "file", size: 50, name: "article[file]", value: @edit_article.file }
   .control-group
     %label.control-label{ for: "article[date]" } Datum:
     .controls
